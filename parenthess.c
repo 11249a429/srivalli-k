@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include<string.h>
+#defineMAX100
+typedefstruct{
+chararr[MAX];
+inttop;
+}Stack;
+voidinit(Stack *s){
+s->top=-1;
+}
+intisEmpty(Stack *s){
+returns->top==-1;
+}
+intisFull(Stack*s){
+returns->top==MAX-1;
+}
+voidpush(Stack *s,charc){
+if(isFull(s)){
+printf("StackOverflow\n");
+return;
+}
+s->arr[++(s->top)]=c;
+}
+charpop(Stack *s){
+if(isEmpty(s)){
+return'\0'
+; 
+}
+returns->arr[(s->top)--];
+}
+intisMatchingPair(charopen,charclose){
+return(open==
+'('&&close==
+')')||
+(open==
+'{'&&close==
+'}')||
+(open==
+'['&&close==
+']');
+}
+intareParenthesesBalanced(char*expr){
+Stack s;
+init(&s);
+for(inti=0;expr[i]!=
+'\0'
+; i++){
+charch=expr[i];
+if(ch==
+'('||ch==
+'{'||ch==
+'['){
+push(&s,ch);
+}
+elseif(ch==
+')'||ch==
+'}'||ch==
+']'){
+if(isEmpty(&s)){
+return0; 
+chartopChar=pop(&s);
+if(!isMatchingPair(topChar,ch)){
+return0;
+}
+}
+}
+returnisEmpty(&s);
+}
+intmain(){
+charexpr[MAX];
+printf("Enterexpression:
+");
+fgets(expr,MAX, stdin);
+expr[strcspn(expr,
+"\n")]=
+'\0'
+;
+if(areParenthesesBalanced(expr)){
+printf("Parenthesesarebalanced.\n");
+}else{
+printf("ParenthesesareNOTbalanced.\n");
+}
+return0;
+}
